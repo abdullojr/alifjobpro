@@ -9,9 +9,13 @@ import { Button, CardActionArea, CardActions, Grid, Alert } from '@mui/material'
 
 
 const Posts = ({ posts }) => {
+  const local = localStorage.getItem('favs');
+  const existLocal = local ? JSON.parse(local) : localStorage.setItem('favs', JSON.stringify([""]));
 
-  const [fav, setFav] = useState([""]);
+  const [fav, setFav] = useState(existLocal);
   const [addAlert, setAddAlert] = useState(true);
+
+
 
   useEffect(() => {
     localStorage.setItem('favs', JSON.stringify(fav));

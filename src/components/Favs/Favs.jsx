@@ -6,7 +6,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 const Favs = () => {
   let favorites = localStorage.getItem("favs");
-  let exectData = JSON.parse(favorites);
+  let exectData = favorites ? JSON.parse(favorites) : localStorage.setItem('favs', JSON.stringify([""]));
 
   const [fevs, setFevs] = useState(exectData);
 
@@ -40,9 +40,7 @@ const Favs = () => {
           </div>
         </Bar>
       </Grid>
-    ) : (
-      <></>
-    )
+    ): null
   );
 
   return (
